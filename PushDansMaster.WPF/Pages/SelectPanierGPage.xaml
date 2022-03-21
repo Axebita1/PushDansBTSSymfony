@@ -24,7 +24,7 @@
                 </DataGrid>
             </Border>
 
-            <Button Background="CornflowerBlue" Margin="0,0,10,10" FontSize="20" Content="Select Panier" Click="Click_Btn_Go_Select_Fournisseur" VerticalAlignment="Bottom" HorizontalAlignment="center">
+            <Button Background="CornflowerBlue" Margin="0,0,10,10" FontSize="20" Content="Select Panier" Click="Click_Btn_Go_Select_Panier" VerticalAlignment="Bottom" HorizontalAlignment="center">
                 <Button.Resources>
                     <Style TargetType="{x:Type Border}">
                         <Setter Property="CornerRadius" Value="7"/>

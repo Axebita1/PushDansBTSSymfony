@@ -16,10 +16,10 @@ namespace PushDansMaster.WPF.Pages
             InitializeComponent();
         }
 
-        private void Click_Btn_Go_Select_Fournisseur(object sender, RoutedEventArgs e)
+        private void Click_Btn_Go_Select_Panier(object sender, RoutedEventArgs e)
         {
-            Fournisseurs_DTO fourSelected = (Liste.SelectedItem as Fournisseurs_DTO);
-            if (fourSelected is null)
+            PanierGlobal_DTO PGSelected = (Liste.SelectedItem as PanierGlobal_DTO);
+            if (PGSelected is null)
             {
                 MessageBox.Show("Selectionnez un panier");
             }
@@ -32,9 +32,9 @@ namespace PushDansMaster.WPF.Pages
         private async void Click_Btn_Actualiser(object sender, RoutedEventArgs e)
         {
             Client clientApi = new Client(new configAPI().getConfig(), new HttpClient());
-            System.Collections.Generic.ICollection<Fournisseurs_DTO> fournisseur = await clientApi.Getall2Async();
+            System.Collections.Generic.ICollection<PanierGlobal_DTO> panierGlobal = await clientApi.Getall4Async();
             Liste.ItemsSource = null;
-            Liste.ItemsSource = fournisseur;
+            Liste.ItemsSource = panierGlobal;
         }
 
     }
