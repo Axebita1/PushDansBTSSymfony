@@ -44,7 +44,7 @@ namespace PushDansMaster.WPF.Pages
             Fournisseurs_DTO fourSelected = (ListeFournisseur.SelectedItem as Fournisseurs_DTO);
             if (fourSelected is null)
             {
-                MessageBox.Show("Selectionner un fournisseur");
+                MessageBox.Show("Selectionnez un fournisseur");
             }
             else
             {
