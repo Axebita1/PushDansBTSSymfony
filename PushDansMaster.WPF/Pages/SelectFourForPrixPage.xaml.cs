@@ -9,9 +9,9 @@ namespace PushDansMaster.WPF.Pages
     /// <summary>
     /// Logique d'interaction pour SetPrixPage.xaml
     /// </summary>
-    public partial class SetPrixPage : Page
+    public partial class SelectFourForPrixPage : Page
     {
-        public SetPrixPage()
+        public SelectFourForPrixPage()
         {
             InitializeComponent();
         }

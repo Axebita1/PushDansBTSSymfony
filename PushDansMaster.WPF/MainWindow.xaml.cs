@@ -66,7 +66,7 @@ namespace PushDansMaster.WPF
         }
         private void rdSendPanier_Click(object sender, RoutedEventArgs e)
         {
-            PagesNavigation.Navigate(new System.Uri("Pages/SetPrixPage.xaml", UriKind.RelativeOrAbsolute));
+            PagesNavigation.Navigate(new System.Uri("Pages/SelectFourForPrixPage.xaml", UriKind.RelativeOrAbsolute));
         }
 
         private void gridgrid_DragEnter(object sender, DragEventArgs e)
