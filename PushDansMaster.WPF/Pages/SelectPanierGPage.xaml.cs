@@ -16,6 +16,20 @@ namespace PushDansMaster.WPF.Pages
             InitializeComponent();
         }
 
+        private async void WindowIsOpen(object sender, RoutedEventArgs e)
+        {
+            Client clientApi = new Client(new configAPI().getConfig(), new HttpClient());
+            System.Collections.Generic.ICollection<PanierGlobal_DTO> PanierG = await clientApi.Getall5Async();
+            Liste.ItemsSource = PanierG;
+        }
+
+        private async void OnPageLoad(object sender, RoutedEventArgs e)
+        {
+            Client clientApi = new Client(new configAPI().getConfig(), new HttpClient());
+            System.Collections.Generic.ICollection<PanierGlobal_DTO> PanierG = await clientApi.Getall5Async();
+            Liste.ItemsSource = PanierG;
+        }
+
         private void Click_Btn_Go_Select_Panier(object sender, RoutedEventArgs e)
         {
             PanierGlobal_DTO PGSelected = (Liste.SelectedItem as PanierGlobal_DTO);
@@ -25,14 +39,14 @@ namespace PushDansMaster.WPF.Pages
             }
             else
             {
-                NavigationService.Navigate(new Uri("Pages/SelectPanierGPage.xaml", UriKind.RelativeOrAbsolute));
+                NavigationService.Navigate(new Uri("Pages/SelectLigneGPage.xaml", UriKind.RelativeOrAbsolute));
             }
 
         }
         private async void Click_Btn_Actualiser(object sender, RoutedEventArgs e)
         {
             Client clientApi = new Client(new configAPI().getConfig(), new HttpClient());
-            System.Collections.Generic.ICollection<PanierGlobal_DTO> panierGlobal = await clientApi.Getall4Async();
+            System.Collections.Generic.ICollection<PanierGlobal_DTO> panierGlobal = await clientApi.Getall5Async();
             Liste.ItemsSource = null;
             Liste.ItemsSource = panierGlobal;
         }
