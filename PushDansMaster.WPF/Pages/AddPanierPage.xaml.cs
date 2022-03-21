@@ -112,9 +112,6 @@ namespace PushDansMaster.WPF.Pages
                     }
 
 
-
-
-
                     int adhID = 0;
                     ICollection<PanierAdherent_DTO> panierAdherents = await clientApi.Getall3Async();
 
