@@ -7,6 +7,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Prism.Wpf" Version="8.1.97" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\PushDansMaster.API\PushDansMaster.API.csproj" />
     <ProjectReference Include="..\PushDansMaster.DAL\PushDansMaster.DAL.csproj" />
     <ProjectReference Include="..\PushDansMaster.DTO\PushDansMaster.DTO.csproj" />

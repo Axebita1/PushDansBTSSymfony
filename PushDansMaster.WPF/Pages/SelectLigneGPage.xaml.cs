@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Prism.Regions;
+using System;
 using System.Net.Http;
 using System.Windows;
 using System.Windows.Controls;
@@ -40,13 +41,14 @@ namespace PushDansMaster.WPF.Pages
 
         private void Click_Btn_Go_Select_Ligne(object sender, RoutedEventArgs e)
         {
-            LigneGlobal_DTO PGSelected = (ListeLignes.SelectedItem as LigneGlobal_DTO);
-            if (PGSelected is null)
+            LigneGlobal_DTO ligneSelected = (ListeLignes.SelectedItem as LigneGlobal_DTO);
+            if (ligneSelected is null)
             {
                 MessageBox.Show("Selectionnez une ligne");
             }
             else
             {
+                Values.SelectedLigneGlobal = ligneSelected;
                 NavigationService.Navigate(new Uri("Pages/SelectLigneGPage.xaml", UriKind.RelativeOrAbsolute));
             }
         }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Prism.Regions;
+using System;
 using System.Net.Http;
 using System.Windows;
 using System.Windows.Controls;
@@ -48,6 +49,7 @@ namespace PushDansMaster.WPF.Pages
             }
             else
             {
+                 Values.SelectedFournisseur = fourSelected;
                  NavigationService.Navigate(new Uri("Pages/SelectPanierGPage.xaml", UriKind.RelativeOrAbsolute));
             }
             

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Prism.Regions;
+using System;
 using System.Net.Http;
 using System.Windows;
 using System.Windows.Controls;
@@ -21,6 +22,9 @@ namespace PushDansMaster.WPF.Pages
             Client clientApi = new Client(new configAPI().getConfig(), new HttpClient());
             System.Collections.Generic.ICollection<PanierGlobal_DTO> PanierG = await clientApi.Getall5Async();
             Liste.ItemsSource = PanierG;
+            label.Content = Values.SelectedFournisseur.NomFournisseur.ToString() + " selectionnez un panier";
+
+
         }
 
         private async void OnPageLoad(object sender, RoutedEventArgs e)
@@ -28,6 +32,7 @@ namespace PushDansMaster.WPF.Pages
             Client clientApi = new Client(new configAPI().getConfig(), new HttpClient());
             System.Collections.Generic.ICollection<PanierGlobal_DTO> PanierG = await clientApi.Getall5Async();
             Liste.ItemsSource = PanierG;
+            label.Content = Values.SelectedFournisseur.NomFournisseur.ToString();
         }
 
         private void Click_Btn_Go_Select_Panier(object sender, RoutedEventArgs e)
@@ -39,7 +44,7 @@ namespace PushDansMaster.WPF.Pages
             }
             else
             {
-                NavigationService.Navigate(new Uri("Pages/SelectLigneGPage.xaml", UriKind.RelativeOrAbsolute));
+                NavigationService.Navigate(new Uri("Pages/SelectLigneGPage.xaml" , UriKind.RelativeOrAbsolute));
             }
 
         }
@@ -50,6 +55,5 @@ namespace PushDansMaster.WPF.Pages
             Liste.ItemsSource = null;
             Liste.ItemsSource = panierGlobal;
         }
-
     }
 }
