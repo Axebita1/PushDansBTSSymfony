@@ -6,8 +6,9 @@ using System.Linq;
 
 namespace PushDansMaster.API.Controllers
 {
-    [ApiController]
+    
     [Route("api/[controller]")]
+    [ApiController]
     public class AdherentController : ControllerBase
     {
         private readonly IAdherentService service;

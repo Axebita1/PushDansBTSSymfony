@@ -10,7 +10,7 @@ namespace PushDansMaster.DAL
         {
             createConnection();
 
-            command.CommandText = "SELECT prix, id_fournisseur, id_lignesglobal FROM prix";
+            command.CommandText = "SELECT id, prix, id_fournisseur, id_lignesglobal FROM prix";
             SqlDataReader reader = command.ExecuteReader();
 
             List<Prix_DAL> listeDePrix = new List<Prix_DAL>();
@@ -19,7 +19,9 @@ namespace PushDansMaster.DAL
             {
                 Prix_DAL p = new Prix_DAL(reader.GetInt32(0),
                                         reader.GetInt32(1),
-                                        reader.GetInt32(2));
+                                        reader.GetInt32(2),
+                                        reader.GetInt32(3)
+                                        );
 
                 listeDePrix.Add(p);
             }
@@ -66,9 +68,9 @@ namespace PushDansMaster.DAL
             command.Parameters.Add(new SqlParameter("@id_fournisseur", prix.getIDFournisseur));
             command.Parameters.Add(new SqlParameter("@id_lignesglobal", prix.getIDLignesGlobal));
 
-            int ID = int.Parse(prix.getIDFournisseur.ToString() + prix.getIDLignesGlobal.ToString());
+            int ID = Convert.ToInt32((decimal)command.ExecuteScalar());
 
-            prix.ID = ID;
+            prix.getIDPrix = ID;
 
             closeConnection();
 
