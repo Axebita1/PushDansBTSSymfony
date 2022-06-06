@@ -1,2 +1,2 @@
 # PushDansMaster
-Ici on push dans master pour un projet C#
+Client lourd BTS SIO
