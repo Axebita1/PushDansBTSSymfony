@@ -66,7 +66,7 @@ namespace PushDansMaster.API.Controllers
         {
             p.ID = id;
 
-            Prix f_work = service.update(new Prix(p.prix, p.idFournisseur, p.idLigneGlobal));
+            Prix f_work = service.update(new Prix(p.ID, p.prix, p.idFournisseur, p.idLigneGlobal));
 
             return p;
         }

@@ -182,7 +182,7 @@ namespace PushDansMaster.WPF.Pages
                         }
                     }
 
-                    ICollection<Reference_DTO> reference_DTOs = await clientApi.Getall6Async();
+                    ICollection<Reference_DTO> reference_DTOs = await clientApi.Getall7Async();
                     if (reference_DTOs.Count == 0)
                     {
                         MessageBox.Show("Aucune référence dans la BDD", "Erreur référence");

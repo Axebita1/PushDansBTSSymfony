@@ -46,7 +46,7 @@ namespace PushDansMaster
 
         public Prix update(Prix p)
         {
-            Prix_DAL prix = new Prix_DAL( p.getPrix,p.getIDFournisseur,p.getIDLignesGlobal) ;
+            Prix_DAL prix = new Prix_DAL(p.GetIDPrix, p.getPrix, p.getIDFournisseur, p.getIDLignesGlobal);
             depot.update(prix);
 
             return p;

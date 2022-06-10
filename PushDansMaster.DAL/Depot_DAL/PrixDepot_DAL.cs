@@ -81,18 +81,18 @@ namespace PushDansMaster.DAL
         {
             createConnection();
 
-            command.CommandText = "update prix set prix=@prix, id_fournisseur=@IDfournisseur, id_lignesglobal=@IDlignesglo)"
-                                   + " where id_fournisseur = @IDfournisseur and id_lignesglobal = @IDlignesglo";
+            command.CommandText = "update prix set prix=@prix, id_fournisseur=@IDfournisseur, id_lignesglobal=@IDlignesglo" + " where id = @ID";
+            command.Parameters.Add(new SqlParameter("@ID", prix.getIDPrix));
             command.Parameters.Add(new SqlParameter("@prix", prix.getPrix));
             command.Parameters.Add(new SqlParameter("@IDfournisseur", prix.getIDFournisseur));
             command.Parameters.Add(new SqlParameter("@IDlignesglo", prix.getIDLignesGlobal));
 
-            int nombreDeLignesAffectees = command.ExecuteNonQuery();
+            var nombreDeLignesAffectees = (int)command.ExecuteNonQuery();
 
             if (nombreDeLignesAffectees != 1)
             {
-                int prixException = int.Parse(prix.getIDFournisseur.ToString() + prix.getIDLignesGlobal.ToString());
-                throw new Exception($"Impossible de mettre à jour le prix d'ID : {prixException}");
+                
+                throw new Exception($"Impossible de mettre à jour le prix d'ID : {prix.getIDPrix}");
             }
 
             closeConnection();
