@@ -12,7 +12,7 @@
         <Grid>
             <Label Content="Rentrez un prix" Foreground="CornflowerBlue" FontSize="35" FontWeight="Bold" VerticalAlignment="Top" HorizontalAlignment="Center"></Label>
             <Label Content="Rentrez un prix" Name="SetPrix" Foreground="CornflowerBlue" FontSize="20" FontWeight="Bold"  VerticalAlignment="Center" HorizontalAlignment="Left" Margin="224,0,0,0"></Label>
-            <TextBox BorderThickness="2" Background="White" Name="SocieteInsertAdherent" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="400,0,0,0" TextWrapping="Wrap" Width="93" Height="38"/>
+            <TextBox BorderThickness="2" Background="White" Name="EnterPrix" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="400,0,0,0" TextWrapping="Wrap" Width="93" Height="38"/>
 
             <Button Background="CornflowerBlue" Margin="0,0,10,10" FontSize="20" Content="Valider" Click="Click_Btn_Go_PrixSet" VerticalAlignment="Bottom" HorizontalAlignment="center">
                 <Button.Resources>

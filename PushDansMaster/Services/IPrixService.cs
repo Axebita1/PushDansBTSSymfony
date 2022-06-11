@@ -10,7 +10,7 @@ namespace PushDansMaster.Services
     {
         public List<Prix> getAll();
 
-        public Prix getbyID(int ID);
+        public Prix getbyID(int id);
 
         public Prix insert(Prix p);
 

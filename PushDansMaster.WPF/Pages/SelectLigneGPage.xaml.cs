@@ -49,7 +49,7 @@ namespace PushDansMaster.WPF.Pages
             else
             {
                 Values.SelectedLigneGlobal = ligneSelected;
-                NavigationService.Navigate(new Uri("Pages/SelectLigneGPage.xaml", UriKind.RelativeOrAbsolute));
+                NavigationService.Navigate(new Uri("Pages/EnterPrixPage.xaml", UriKind.RelativeOrAbsolute));
             }
         }
     }

@@ -147,7 +147,7 @@ namespace PushDansMaster.WPF.Pages
                             {
                                 IDtmp = item.Id;
                                 break;
-                            }
+                            }                       
                         }
 
                         pA.Semaine = week;

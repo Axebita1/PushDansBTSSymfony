@@ -35,7 +35,7 @@ namespace PushDansMaster.DAL
         {
             createConnection();
 
-            command.CommandText = "SELECT prix, id_fournisseur, id_lignesglobal FROM prix WHERE CONCAT(id_fournisseur, id_lignesglobal)=@ID";
+            command.CommandText = "SELECT id, prix, id_fournisseur, id_lignesglobal FROM prix WHERE id=@ID";
             command.Parameters.Add(new SqlParameter("@ID", ID));
             SqlDataReader reader = command.ExecuteReader();
 
@@ -45,8 +45,9 @@ namespace PushDansMaster.DAL
             if (reader.Read())
             {
                 p = new Prix_DAL(reader.GetInt32(0),
-                                        reader.GetInt32(1),
-                                        reader.GetInt32(2));
+                                     reader.GetInt32(1),
+                                        reader.GetInt32(2),
+                                        reader.GetInt32(3));
             }
             else
             {
