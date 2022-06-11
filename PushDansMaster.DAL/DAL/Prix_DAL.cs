@@ -4,12 +4,17 @@ namespace PushDansMaster.DAL
 {
     public class Prix_DAL
     {
-        private int prix;
+        public int prix;
         public int ID;
         public int idFournisseur;
         public int idLignesGlobal;
 
         #region Getters / Setters
+        public int getIDPrix
+        {
+            get => ID;
+            set => ID = value;
+        }
         public int getPrix
         {
             get => prix;
@@ -31,6 +36,10 @@ namespace PushDansMaster.DAL
         public Prix_DAL(int Prix, int IdFournisseur, int IdLignesGlobal)
         {
             (prix, idFournisseur, idLignesGlobal) = (Prix, IdFournisseur, IdLignesGlobal);
+        }
+        public Prix_DAL(int id, int Prix, int IdFournisseur, int IdLignesGlobal)
+        {
+            (ID ,prix, idFournisseur, idLignesGlobal) = (id, Prix, IdFournisseur, IdLignesGlobal);
         }
         #endregion
 

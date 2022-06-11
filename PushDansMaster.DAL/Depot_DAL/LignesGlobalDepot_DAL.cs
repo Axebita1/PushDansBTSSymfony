@@ -86,7 +86,7 @@ namespace PushDansMaster.DAL
 
             command.CommandText = "UPDATE lignes_global SET id_panier=@id_panier, quantite=@quantite, reference=@reference, id_reference=@id_reference"
                                    + " WHERE id=@ID";
-            command.Parameters.Add(new SqlParameter("@ID", ligne.getID));
+            command.Parameters.Add(new SqlParameter("@ID", ligne.ID));
             command.Parameters.Add(new SqlParameter("@id_panier", ligne.getId_panier));
             command.Parameters.Add(new SqlParameter("@quantite", ligne.getQuantite));
             command.Parameters.Add(new SqlParameter("@reference", ligne.getReference));
@@ -95,7 +95,7 @@ namespace PushDansMaster.DAL
 
             if (nombreDeLignesAffectees != 1)
             {
-                throw new Exception($"Impossible de mettre à jour la ligne globale d'ID : {ligne.getID}");
+                throw new Exception($"Impossible de mettre à jour la ligne globale d'ID : {ligne.ID}");
             }
 
             closeConnection();
@@ -108,12 +108,12 @@ namespace PushDansMaster.DAL
             createConnection();
 
             command.CommandText = "DELETE from lignes_global WHERE id=@ID";
-            command.Parameters.Add(new SqlParameter("@ID", ligne.getID));
+            command.Parameters.Add(new SqlParameter("@ID", ligne.ID));
             int nombreDeLignesAffectees = command.ExecuteNonQuery();
 
             if (nombreDeLignesAffectees != 1)
             {
-                throw new Exception($"Impossible de supprimer la ligne globale d'ID {ligne.getID}");
+                throw new Exception($"Impossible de supprimer la ligne globale d'ID {ligne.ID}");
             }
 
             closeConnection();

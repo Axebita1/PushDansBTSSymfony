@@ -93,7 +93,7 @@ namespace PushDansMaster.WPF.Pages
                     DayOfWeek myFirstDOW = cultureInfo.DateTimeFormat.FirstDayOfWeek;
                     int week = calendar.GetWeekOfYear(dt, myCWR, myFirstDOW) - 1;
 
-                    ICollection<PanierGlobal_DTO> panierGlobals = await clientApi.Getall4Async();
+                    ICollection<PanierGlobal_DTO> panierGlobals = await clientApi.Getall5Async();
                     bool panierFound = false;
                     foreach (PanierGlobal_DTO pg in panierGlobals)
                     {
@@ -113,7 +113,7 @@ namespace PushDansMaster.WPF.Pages
 
 
                     int adhID = 0;
-                    ICollection<PanierAdherent_DTO> panierAdherents = await clientApi.Getall3Async();
+                    ICollection<PanierAdherent_DTO> panierAdherents = await clientApi.Getall4Async();
 
                     Adherent_DTO AdhSelected = (cbAdh.SelectedItem as Adherent_DTO);
 
@@ -139,7 +139,7 @@ namespace PushDansMaster.WPF.Pages
                     }
                     if (!foundPanierAdh)
                     {
-                        ICollection<PanierGlobal_DTO> listPanierglob = await clientApi.Getall4Async();
+                        ICollection<PanierGlobal_DTO> listPanierglob = await clientApi.Getall5Async();
                         int IDtmp = 0;
                         foreach (PanierGlobal_DTO item in listPanierglob)
                         {
@@ -147,7 +147,7 @@ namespace PushDansMaster.WPF.Pages
                             {
                                 IDtmp = item.Id;
                                 break;
-                            }
+                            }                       
                         }
 
                         pA.Semaine = week;
@@ -182,7 +182,7 @@ namespace PushDansMaster.WPF.Pages
                         }
                     }
 
-                    ICollection<Reference_DTO> reference_DTOs = await clientApi.Getall5Async();
+                    ICollection<Reference_DTO> reference_DTOs = await clientApi.Getall7Async();
                     if (reference_DTOs.Count == 0)
                     {
                         MessageBox.Show("Aucune référence dans la BDD", "Erreur référence");

@@ -71,7 +71,7 @@ namespace PushDansMaster.WPF.Pages
                             Marque = marque[i],
                             Quantite = 9999999
                         };
-                        await clientApi.Insert7Async(refDTO);
+                        await clientApi.Insert8Async(refDTO);
                         i++;
                     }
                     for (int j = 0; j < files.Length; j++)

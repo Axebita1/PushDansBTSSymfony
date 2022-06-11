@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Prism.Regions;
+using System;
 using System.Net.Http;
 using System.Windows;
 using System.Windows.Controls;
@@ -9,9 +10,9 @@ namespace PushDansMaster.WPF.Pages
     /// <summary>
     /// Logique d'interaction pour SetPrixPage.xaml
     /// </summary>
-    public partial class SetPrixPage : Page
+    public partial class SelectFourForPrixPage : Page
     {
-        public SetPrixPage()
+        public SelectFourForPrixPage()
         {
             InitializeComponent();
         }
@@ -44,10 +45,11 @@ namespace PushDansMaster.WPF.Pages
             Fournisseurs_DTO fourSelected = (ListeFournisseur.SelectedItem as Fournisseurs_DTO);
             if (fourSelected is null)
             {
-                MessageBox.Show("Selectionner un fournisseur");
+                MessageBox.Show("Selectionnez un fournisseur");
             }
             else
             {
+                 Values.SelectedFournisseur = fourSelected;
                  NavigationService.Navigate(new Uri("Pages/SelectPanierGPage.xaml", UriKind.RelativeOrAbsolute));
             }
             
