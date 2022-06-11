@@ -48,22 +48,19 @@
 
         public LignesGlobal(int id_panier, int quantite, string reference, int id_reference)
         {
+            
             this.id_panier = id_panier;
             this.quantite = quantite;
             this.reference = reference;
             this.id_reference = id_reference;
         }
 
-        private LignesGlobal(int id, int id_panier, int quantite, string reference, int id_reference)
+        public LignesGlobal(int id, int id_panier, int quantite, string reference, int id_reference)
             : this(id_panier, quantite, reference, id_reference)
         {
             ID = id;
         }
 
-        private LignesGlobal()
-        {
-
-        }
         #endregion
     }
 }

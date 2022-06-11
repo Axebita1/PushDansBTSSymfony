@@ -44,11 +44,6 @@
             ID = id;
         }
 
-        public PanierGlobal()
-        {
-
-        }
-
         #endregion
     }
 }

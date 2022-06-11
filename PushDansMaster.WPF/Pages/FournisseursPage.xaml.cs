@@ -14,7 +14,6 @@ namespace PushDansMaster.WPF.Pages
 
         }
 
-
         private async void WindowIsOpen(object sender, RoutedEventArgs e)
         {
             Client clientApi = new Client(new configAPI().getConfig(), new HttpClient());
@@ -69,5 +68,7 @@ namespace PushDansMaster.WPF.Pages
             Liste.ItemsSource = null;
             Liste.ItemsSource = fournisseur;
         }
+
+
     }
 }

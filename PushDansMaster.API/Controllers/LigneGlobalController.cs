@@ -1,5 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using PushDansMaster.DTO;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace PushDansMaster.API.Controllers
 {
@@ -14,6 +16,19 @@ namespace PushDansMaster.API.Controllers
             service = srv;
         }
 
+
+        [HttpGet("getall/")]
+        public IEnumerable<LigneGlobal_DTO> GetAllLignesGlobal()
+        {
+            return service.getAll().Select(f => new LigneGlobal_DTO()
+            {
+                ID = f.getID,
+                id_panier = f.getIDPanier,
+                quantite = f.getQuantite,
+                reference = f.getReference,
+                id_reference = f.getIDReference
+            }); 
+        }
 
         // POST: api/LigneGlobal/insert → Insert a new LigneGlobal
         [HttpPost("insert/")]

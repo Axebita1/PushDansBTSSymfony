@@ -10,7 +10,7 @@ namespace PushDansMaster.DAL
         {
             createConnection();
 
-            command.CommandText = "SELECT prix, id_fournisseur, id_lignesglobal FROM prix";
+            command.CommandText = "SELECT id, prix, id_fournisseur, id_lignesglobal FROM prix";
             SqlDataReader reader = command.ExecuteReader();
 
             List<Prix_DAL> listeDePrix = new List<Prix_DAL>();
@@ -19,7 +19,9 @@ namespace PushDansMaster.DAL
             {
                 Prix_DAL p = new Prix_DAL(reader.GetInt32(0),
                                         reader.GetInt32(1),
-                                        reader.GetInt32(2));
+                                        reader.GetInt32(2),
+                                        reader.GetInt32(3)
+                                        );
 
                 listeDePrix.Add(p);
             }
@@ -33,7 +35,7 @@ namespace PushDansMaster.DAL
         {
             createConnection();
 
-            command.CommandText = "SELECT prix, id_fournisseur, id_lignesglobal FROM prix WHERE CONCAT(id_fournisseur, id_lignesglobal)=@ID";
+            command.CommandText = "SELECT id, prix, id_fournisseur, id_lignesglobal FROM prix WHERE id=@ID";
             command.Parameters.Add(new SqlParameter("@ID", ID));
             SqlDataReader reader = command.ExecuteReader();
 
@@ -43,8 +45,9 @@ namespace PushDansMaster.DAL
             if (reader.Read())
             {
                 p = new Prix_DAL(reader.GetInt32(0),
-                                        reader.GetInt32(1),
-                                        reader.GetInt32(2));
+                                     reader.GetInt32(1),
+                                        reader.GetInt32(2),
+                                        reader.GetInt32(3));
             }
             else
             {
@@ -66,9 +69,9 @@ namespace PushDansMaster.DAL
             command.Parameters.Add(new SqlParameter("@id_fournisseur", prix.getIDFournisseur));
             command.Parameters.Add(new SqlParameter("@id_lignesglobal", prix.getIDLignesGlobal));
 
-            int ID = int.Parse(prix.getIDFournisseur.ToString() + prix.getIDLignesGlobal.ToString());
+            int ID = Convert.ToInt32((decimal)command.ExecuteScalar());
 
-            prix.ID = ID;
+            prix.getIDPrix = ID;
 
             closeConnection();
 
@@ -79,18 +82,18 @@ namespace PushDansMaster.DAL
         {
             createConnection();
 
-            command.CommandText = "update prix set prix=@prix, id_fournisseur=@IDfournisseur, id_lignesglobal=@IDlignesglo)"
-                                   + " where id_fournisseur = @IDfournisseur and id_lignesglobal = @IDlignesglo";
+            command.CommandText = "update prix set prix=@prix, id_fournisseur=@IDfournisseur, id_lignesglobal=@IDlignesglo" + " where id = @ID";
+            command.Parameters.Add(new SqlParameter("@ID", prix.getIDPrix));
             command.Parameters.Add(new SqlParameter("@prix", prix.getPrix));
             command.Parameters.Add(new SqlParameter("@IDfournisseur", prix.getIDFournisseur));
             command.Parameters.Add(new SqlParameter("@IDlignesglo", prix.getIDLignesGlobal));
 
-            int nombreDeLignesAffectees = command.ExecuteNonQuery();
+            var nombreDeLignesAffectees = (int)command.ExecuteNonQuery();
 
             if (nombreDeLignesAffectees != 1)
             {
-                int prixException = int.Parse(prix.getIDFournisseur.ToString() + prix.getIDLignesGlobal.ToString());
-                throw new Exception($"Impossible de mettre à jour le prix d'ID : {prixException}");
+                
+                throw new Exception($"Impossible de mettre à jour le prix d'ID : {prix.getIDPrix}");
             }
 
             closeConnection();
